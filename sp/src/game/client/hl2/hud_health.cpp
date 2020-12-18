@@ -27,7 +27,7 @@
 using namespace vgui;
 
 #include "hudelement.h"
-#include "hud_numericdisplay.h"
+#include "hud_bitmapnumericdisplay.h"
 
 #include "convar.h"
 
@@ -39,9 +39,9 @@ using namespace vgui;
 //-----------------------------------------------------------------------------
 // Purpose: Health panel
 //-----------------------------------------------------------------------------
-class CHudHealth : public CHudElement, public CHudNumericDisplay
+class CHudHealth : public CHudElement, public CHudBitmapNumericDisplay
 {
-	DECLARE_CLASS_SIMPLE( CHudHealth, CHudNumericDisplay );
+	DECLARE_CLASS_SIMPLE(CHudHealth, CHudBitmapNumericDisplay);
 
 public:
 	CHudHealth( const char *pElementName );
@@ -64,7 +64,7 @@ DECLARE_HUD_MESSAGE( CHudHealth, Damage );
 //-----------------------------------------------------------------------------
 // Purpose: Constructor
 //-----------------------------------------------------------------------------
-CHudHealth::CHudHealth( const char *pElementName ) : CHudElement( pElementName ), CHudNumericDisplay(NULL, "HudHealth")
+CHudHealth::CHudHealth(const char *pElementName) : CHudElement(pElementName), CHudBitmapNumericDisplay(NULL, "HudHealth")
 {
 	SetHiddenBits( HIDEHUD_HEALTH | HIDEHUD_PLAYERDEAD | HIDEHUD_NEEDSUIT );
 }
@@ -90,11 +90,11 @@ void CHudHealth::Reset()
 
 	if (tempString)
 	{
-		SetLabelText(tempString);
+		//SetLabelText(tempString);
 	}
 	else
 	{
-		SetLabelText(L"HEALTH");
+		//SetLabelText(L"HEALTH");
 	}
 	SetDisplayValue(m_iHealth);
 }
